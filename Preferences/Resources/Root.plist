@@ -36,9 +36,7 @@
 			<key>key</key>
 			<string>useCustomAstolfoImage</string>
 			<key>label</key>
-			<string>Use Custom Image</string>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
+			<string>Use custom image</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -46,7 +44,7 @@
 			<key>cellClass</key>
 			<string>GcImagePickerCell</string>
 			<key>label</key>
-			<string>Choose Image</string>
+			<string>Choose custom image</string>
 			<key>defaults</key>
 			<string>love.litten.astolfopreferences</string>
 			<key>key</key>
@@ -68,15 +66,13 @@
 			<key>key</key>
 			<string>fillScreen</string>
 			<key>label</key>
-			<string>Fill Screen</string>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
+			<string>Fill screen</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>X Position</string>
+			<string>Horizontal Alignment</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -95,14 +91,12 @@
 			<true/>
 			<key>isSegmented</key>
 			<false/>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Y Position</string>
+			<string>Vertical Alignment</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -121,8 +115,6 @@
 			<true/>
 			<key>isSegmented</key>
 			<false/>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -147,15 +139,13 @@
 			<true/>
 			<key>isSegmented</key>
 			<false/>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Background Blur</string>
+			<string>Background blur</string>
 			<key>footerText</key>
 			<string>iOS 14 Only</string>
 			<key>isStaticText</key>
@@ -165,7 +155,7 @@
 			<key>cell</key>
 			<string>PSLinkListCell</string>
 			<key>default</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>detail</key>
 			<string>PSListItemsController</string>
 			<key>defaults</key>
@@ -178,14 +168,14 @@
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 			<key>validTitles</key>
 			<array>
 				<string>Light</string>
 				<string>Dark</string>
+				<string>Adaptive</string>
 			</array>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -210,15 +200,13 @@
 			<true/>
 			<key>isSegmented</key>
 			<false/>
-			<key>PostNotification</key>
-			<string>love.litten.astolfopreferences/ReloadPrefs</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Other Options</string>
+			<string>Other options</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -249,16 +237,16 @@
  			<key>label</key>
  			<string>Contributors</string>
  			<key>detail</key>
- 			<string>AFOContributorsSubPrefsListController</string>
+ 			<string>AFOContributorsSubPreferencesListController</string>
  			<key>AFOSub</key>
- 			<string>contributorsSub</string>
+ 			<string>sub/contributors</string>
  		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>You Might Like:</string>
+			<string>You might like:</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -268,7 +256,7 @@
 			<key>subtitle</key>
 			<string>Battery friendly video wallpapers</string>
 			<key>icon</key>
-			<string>Eneko.png</string>
+			<string>featured/Eneko.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/ene/</string>
 		</dict>
@@ -280,7 +268,7 @@
 			<key>subtitle</key>
 			<string>Outstanding app labels</string>
 			<key>icon</key>
-			<string>Avrora.png</string>
+			<string>featured/Avrora.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/ava/</string>
 		</dict>
@@ -289,7 +277,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>Astolfo By Litten, Original Astolfo By Nepeta</string>
+			<string>Astolfo by Litten, original Astolfo by Nepeta</string>
 			<key>isStaticText</key>
 			<true/>
 		</dict>
@@ -307,7 +295,7 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Source Code</string>
+			<string>Source code</string>
 			<key>subtitle</key>
 			<string>GitHub 👒</string>
 			<key>url</key>
@@ -317,7 +305,7 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Donate To Litten</string>
+			<string>Donate to Litten</string>
 			<key>subtitle</key>
 			<string>Appreciated 💝</string>
 			<key>url</key>

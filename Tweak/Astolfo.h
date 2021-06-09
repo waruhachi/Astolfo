@@ -4,24 +4,23 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
-HBPreferences* preferences;
+HBPreferences* preferences = nil;
+BOOL enabled = NO;
 
-extern BOOL enabled;
-
-UIImageView* astolfoImageView;
-UIVisualEffectView* blurView;
-UIBlurEffect* blur;
+UIImageView* astolfoImageView = nil;
+UIVisualEffectView* blurView = nil;
+UIBlurEffect* blur = nil;
 
 // image customization
 BOOL useCustomAstolfoImageSwitch = NO;
 BOOL fillScreenSwitch = NO;
-NSString* astolfoXPositionValue = @"0.0";
-NSString* astolfoYPositionValue = @"150.0";
-NSString* astolfoAlphaValue = @"1.0";
+NSString* astolfoXPositionValue = @"0";
+NSString* astolfoYPositionValue = @"150";
+NSString* astolfoAlphaValue = @"1";
 
 // background blur
-NSString* blurValue = @"1";
-NSString* blurAmountValue = @"0.0";
+NSString* blurValue = @"2";
+NSString* blurAmountValue = @"0";
 
 @interface SiriUIBackgroundBlurViewController : UIViewController
 @end

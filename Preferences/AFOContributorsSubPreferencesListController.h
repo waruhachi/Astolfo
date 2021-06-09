@@ -7,6 +7,9 @@
 @interface AFOAppearanceSettings : HBAppearanceSettings
 @end
 
-@interface AFOContributorsSubPrefsListController : HBListController
+@interface AFOContributorsSubPreferencesListController : HBListController
+@property(nonatomic, retain)AFOAppearanceSettings* appearanceSettings;
 @property(nonatomic, retain)UILabel* titleLabel;
+@property(nonatomic, retain)UIBlurEffect* blur;
+@property(nonatomic, retain)UIVisualEffectView* blurView;
 @end

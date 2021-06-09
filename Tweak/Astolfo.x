@@ -1,7 +1,5 @@
 #import "Astolfo.h"
 
-BOOL enabled;
-
 %group Astolfo
 
 %hook SiriUIBackgroundBlurViewController
@@ -11,12 +9,14 @@ BOOL enabled;
 	%orig;
 
 	// background blur
-	if ([blurAmountValue doubleValue] != 0.0) {
+	if ([blurAmountValue doubleValue] != 0) {
 		if (!blur) {
 			if ([blurValue intValue] == 0)
 				blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
 			else if ([blurValue intValue] == 1)
 				blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+			else if ([blurValue intValue] == 2)
+				blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
 		}
 		if (!blurView) blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
 		[blurView setFrame:[[self view] bounds]];
@@ -36,11 +36,11 @@ BOOL enabled;
 		[astolfoImageView setContentMode:UIViewContentModeScaleAspectFill];
 
 	if (!useCustomAstolfoImageSwitch)
-		[astolfoImageView setImage:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/AstolfoPrefs.bundle/astolfo.png"]];
+		[astolfoImageView setImage:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/AstolfoPreferences.bundle/astolfo.png"]];
 	else
 		[astolfoImageView setImage:[GcImagePickerUtils imageFromDefaults:@"love.litten.astolfopreferences" withKey:@"astolfoImage"]];
 		
-	[astolfoImageView setAlpha:0.0];
+	[astolfoImageView setAlpha:0];
 	if (![astolfoImageView isDescendantOfView:[self view]]) [[self view] addSubview:astolfoImageView];
 
 	[astolfoImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -55,7 +55,7 @@ BOOL enabled;
 
 	%orig;
 
-	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[blurView setAlpha:[blurAmountValue doubleValue]];
 		[astolfoImageView setAlpha:[astolfoAlphaValue doubleValue]];
 	} completion:nil];
@@ -70,9 +70,9 @@ BOOL enabled;
 
 	%orig;
 
-	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		[blurView setAlpha:0.0];
-		[astolfoImageView setAlpha:0.0];
+	[UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[blurView setAlpha:0];
+		[astolfoImageView setAlpha:0];
 	} completion:nil];
 
 }
@@ -97,11 +97,11 @@ BOOL enabled;
 		[astolfoImageView setContentMode:UIViewContentModeScaleAspectFill];
 
 	if (!useCustomAstolfoImageSwitch)
-		[astolfoImageView setImage:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/AstolfoPrefs.bundle/astolfo.png"]];
+		[astolfoImageView setImage:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/AstolfoPreferences.bundle/astolfo.png"]];
 	else
 		[astolfoImageView setImage:[GcImagePickerUtils imageFromDefaults:@"love.litten.astolfopreferences" withKey:@"astolfoImage"]];
 		
-	[astolfoImageView setAlpha:0.0];
+	[astolfoImageView setAlpha:0];
 	[[self view] addSubview:astolfoImageView];
 
 	[astolfoImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -116,7 +116,7 @@ BOOL enabled;
 
 	%orig;
 
-	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[astolfoImageView setAlpha:[astolfoAlphaValue doubleValue]];
 	} completion:nil];
 
@@ -126,8 +126,8 @@ BOOL enabled;
 
 	%orig;
 
-	[UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		[astolfoImageView setAlpha:0.0];
+	[UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[astolfoImageView setAlpha:0];
 	} completion:nil];
 
 }
@@ -140,24 +140,23 @@ BOOL enabled;
 
 	preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.astolfopreferences"];
 
-	[preferences registerBool:&enabled default:nil forKey:@"Enabled"];
+	[preferences registerBool:&enabled default:NO forKey:@"Enabled"];
+	if (!enabled) return;
 
-	// Image Customization
+	// image customization
 	[preferences registerBool:&useCustomAstolfoImageSwitch default:NO forKey:@"useCustomAstolfoImage"];
 	[preferences registerBool:&fillScreenSwitch default:NO forKey:@"fillScreen"];
-	[preferences registerObject:&astolfoXPositionValue default:@"0.0" forKey:@"astolfoXPosition"];
-	[preferences registerObject:&astolfoYPositionValue default:@"150.0" forKey:@"astolfoYPosition"];
-	[preferences registerObject:&astolfoAlphaValue default:@"1.0" forKey:@"astolfoAlpha"];
+	[preferences registerObject:&astolfoXPositionValue default:@"0" forKey:@"astolfoXPosition"];
+	[preferences registerObject:&astolfoYPositionValue default:@"150" forKey:@"astolfoYPosition"];
+	[preferences registerObject:&astolfoAlphaValue default:@"1" forKey:@"astolfoAlpha"];
 
 	// background blur
 	if (!SYSTEM_VERSION_LESS_THAN(@"14")) {
-		[preferences registerObject:&blurValue default:@"1" forKey:@"blur"];
-		[preferences registerObject:&blurAmountValue default:@"0.0" forKey:@"blurAmount"];
+		[preferences registerObject:&blurValue default:@"2" forKey:@"blur"];
+		[preferences registerObject:&blurAmountValue default:@"0" forKey:@"blurAmount"];
 	}
 
-	if (enabled) {
-		if (!SYSTEM_VERSION_LESS_THAN(@"14")) %init(Astolfo);
-		else if (SYSTEM_VERSION_LESS_THAN(@"14")) %init(Astolfo13);
-	}
+	if (!SYSTEM_VERSION_LESS_THAN(@"14")) %init(Astolfo);
+	else if (SYSTEM_VERSION_LESS_THAN(@"14")) %init(Astolfo13);
 
 }
