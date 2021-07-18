@@ -258,7 +258,7 @@
 			<key>icon</key>
 			<string>featured/Eneko.png</string>
 			<key>url</key>
-			<string>https://repo.litten.love/depictions/ene/</string>
+			<string>https://repo.litten.love/depictions/Eneko/</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -270,7 +270,7 @@
 			<key>icon</key>
 			<string>featured/Avrora.png</string>
 			<key>url</key>
-			<string>https://repo.litten.love/depictions/ava/</string>
+			<string>https://repo.litten.love/depictions/Avrora/</string>
 		</dict>
 
 		<dict>
